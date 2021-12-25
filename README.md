@@ -1,5 +1,5 @@
 # UrShops
-Multi vendor application using pure Nodejs (http module)
+A Complete Multi vendor Web App using Pure Node.js (HTTP Module only)
 
 
 #APIs Documentation Link
