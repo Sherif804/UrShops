@@ -3,6 +3,7 @@ let http = require('http');
 const PORT = process.env.PORT || 3000;
 let fs = require('fs');
 let userRoutes = require("./modules/user/routes/user.routes");
+let adminRoutes = require("./modules/admin/routes/admin.routes");
 
 const { createTables } = require("./database/createTables");
 
@@ -27,7 +28,8 @@ let httpServer = http.createServer(async (req, res) => {
 
         // Modules Routes
         userRoutes(req, res);
-
+        adminRoutes(req,res);
+        
         // Static files
         if (req.url.match(/^[/]uploads(.*)/)) {
             fs.readFile(__dirname + req.url, (err, data) => {
