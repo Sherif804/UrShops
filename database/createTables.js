@@ -3,9 +3,8 @@ const { createDatabase } = require("./createDatabase");
 const { adminModel } = require("../modules/admin/model/admin.model");
 const { categoryModel } = require("../modules/category/model/category.model");
 const { storeModel, storeCategoriesModel } = require("../modules/store/model/store.model");
-const {productModel} = require("../modules/product/model/product.model");
-const {wishlistModel} = require("../modules/wishlist/model/wishlist.model");
-
+const { productModel } = require("../modules/product/model/product.model");
+const { wishlistModel } = require("../modules/wishlist/model/wishlist.model");
 
 
 let createTables = () => {
@@ -18,7 +17,7 @@ let createTables = () => {
     storeModel();
     storeCategoriesModel();
     productModel();
-    wishlistModel()
+    wishlistModel();
 }
 
 module.exports = {
