@@ -79,7 +79,7 @@ let adminSignIn = async (req, res) => {
                         res.end(response);
                     }
                     else {
-                        response = { status: 422, message: "This password is invalid" };
+                        response = { status: 422, message: "Please enter a correct password" };
                         response = JSON.stringify(response);
                         res.end(response);
                     }
@@ -103,7 +103,6 @@ let updateAdmin = async (req, res) => {
     try {
         let body = await getPostData(req);
         body = JSON.parse(body);
-        console.log(body.role);
         if (updateAdminValidation(body.firstName, body.lastName, body.userName, body.password, body.role) == true) {
             Admin.execute(`select * from admin where _id = '${req.paramsId}'`, (err, data) => { adminFound(data, adminData); });
             let updateQuery = () => { Admin.execute((`update admin set firstName = '${firstName}', lastName = '${lastName}', userName = '${userName}', password = '${password}', role = '${role}' where _id = '${req.paramsId}'`)); }

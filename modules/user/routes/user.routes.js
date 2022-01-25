@@ -1,4 +1,4 @@
-let { signUp, userSignIn, editUserProfile, resetPassword, addAddress, editAddress, deleteAddress, addProfilePicture, deleteProfilePicture, forgetPasswordForm,
+const { signUp, userSignIn, editUserProfile, resetPassword, addAddress, editAddress, deleteAddress, addProfilePicture, deleteProfilePicture, forgetPasswordForm,
     sendEmailToGenerateRecoveryCode, verifyRecoveryCode, contactUsForm, getCurrentUser, getAllUsers } = require("../controller/user.controller");
 const { isUserAuthorized, isAdminAuthorized } = require("../../../utils/auth");
 

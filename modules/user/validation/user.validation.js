@@ -1,5 +1,4 @@
-let { isEmpty, isAlphabetic, isAlphaNum, isNum, isEmail, isUrl, isPassword, isText, isStreet, isBase64,
-    isImageExtension, isSubject } = require("../../../utils/validation");
+let { isEmpty, isAlphabetic, isNum, isEmail, isPassword, isText, isStreet, isBase64, isImageExtension, isSubject } = require("../../../utils/validation");
 
 let signUpValidation = (firstName, lastName, email, password) => {
     if (isAlphabetic(firstName) && isAlphabetic(lastName) && isEmail(email) && isPassword(password) && firstName && lastName && password && email) {

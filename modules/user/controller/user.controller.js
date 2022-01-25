@@ -16,7 +16,6 @@ let signUp = async (req, res) => {
     let body, response, userData;
     await req.on('data', chunk => { body = JSON.parse(chunk); });
     const { firstName, lastName, email, password } = body;
-    console.log(firstName);
     try {
         if (signUpValidation(firstName, lastName, email, password) == true) {
             User.execute(`select * from user where email = '${email}'`, (err, data) => { userFound(data, userData); });
@@ -63,7 +62,7 @@ let userSignIn = async (req, res) => {
             let userFound = (data, user) => {
                 user = data;
                 if (user.length == 0) {
-                    response = { status: 400, message: "Please enter a valid email" };
+                    response = { status: 400, message: "This email does not exists" };
                     response = JSON.stringify(response);
                     res.end(response);
                 }
@@ -79,7 +78,7 @@ let userSignIn = async (req, res) => {
                         res.end(response);
                     }
                     else {
-                        response = { status: 422, message: "This password is invalid" };
+                        response = { status: 422, message: "Incorrect password" };
                         response = JSON.stringify(response);
                         res.end(response);
                     }
@@ -391,7 +390,7 @@ let sendEmailToGenerateRecoveryCode = async (req, res) => {
             let userFound = (data, user) => {
                 user = data;
                 if (user.length == 0) {
-                    response = { status: 400, message: "Please enter correct email" };
+                    response = { status: 400, message: "This email does not exist" };
                     response = JSON.stringify(response);
                     res.end(response)
                 }
