@@ -128,7 +128,6 @@ let isSharedAuthorized = async (req, res, next) => {
     }
 }
 
-
 module.exports = {
     isUserAuthorized,
     isAdminAuthorized,
