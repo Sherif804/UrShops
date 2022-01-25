@@ -4,6 +4,11 @@ const PORT = process.env.PORT || 3000;
 let fs = require('fs');
 let userRoutes = require("./modules/user/routes/user.routes");
 let adminRoutes = require("./modules/admin/routes/admin.routes");
+let storeRoutes = require("./modules/store/routes/store.routes");
+let categoryRoutes = require("./modules/category/routes/category.routes");
+let productRoutes = require("./modules/product/routes/product.routes");
+let wishlistRoutes = require("./modules/wishlist/routes/wishlist.routes");
+
 
 const { createTables } = require("./database/createTables");
 
@@ -26,10 +31,6 @@ let httpServer = http.createServer(async (req, res) => {
     if (["GET", "POST", "PUT", "DELETE"].indexOf(req.method) > -1) {
         res.writeHead(200, headers);
 
-        // Modules Routes
-        userRoutes(req, res);
-        adminRoutes(req,res);
-        
         // Static files
         if (req.url.match(/^[/]uploads(.*)/)) {
             fs.readFile(__dirname + req.url, (err, data) => {
@@ -42,6 +43,15 @@ let httpServer = http.createServer(async (req, res) => {
                 res.end(data);
             });
         }
+
+        // Modules Routes
+        userRoutes(req, res);
+        adminRoutes(req,res);
+        storeRoutes(req,res);
+        categoryRoutes(req,res);
+        productRoutes(req,res);
+        wishlistRoutes(req, res);
+
         return;
     }
 });
